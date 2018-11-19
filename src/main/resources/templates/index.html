@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <title>WhatSapp</title>
+    <link href="../static/css/style.css"
+          th:href="@{css/style.css}"
+          rel="stylesheet"
+          media="screen"/>
+
+</head>
+<body>
+<div class="green">
+</div>
+<div class="container putih">
+    <div class="atas">
+        <div class="tengah">
+            <h1>Whatsapp</h1>
+            <h3>Please login to use this application</h3>
+            <div class="kiri">
+                <h4>Username :<input type="text" name="username"/></h4>
+                <h4>Password :<input type="text" name="password"/></h4>
+            </div>
+            <form action="#" th:action="@{/home}">
+            <input type="checkbox" name=""> Keep me signed in <br>
+            <input type="submit" value="Login" class="btnLogin"/>
+            </form>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
