@@ -11,7 +11,7 @@ import com.javaee.proyek.whatsapp_proyek.models.Users;
 import com.javaee.proyek.whatsapp_proyek.repositories.UsersRepository;
 
 @Controller
-@RequestMapping("/users")
+@RequestMapping(path="/users")
 public class UsersController {
     @Autowired
     private UsersRepository repository;
