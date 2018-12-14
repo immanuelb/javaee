@@ -16,4 +16,9 @@ public class IndexController {
     public String getHomePage(@RequestParam("username") String uname, @RequestParam("password") String password){
         return "home";
     }
+
+    @RequestMapping("/register")
+    public String register(){
+        return "register";
+    }
 }

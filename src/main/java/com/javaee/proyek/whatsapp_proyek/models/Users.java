@@ -1,6 +1,7 @@
 package com.javaee.proyek.whatsapp_proyek.models;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
