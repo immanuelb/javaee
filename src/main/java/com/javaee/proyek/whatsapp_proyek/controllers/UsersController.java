@@ -10,6 +10,8 @@ import javax.validation.Valid;
 import com.javaee.proyek.whatsapp_proyek.models.Users;
 import com.javaee.proyek.whatsapp_proyek.repositories.UsersRepository;
 
+import java.util.List;
+
 @Controller
 @RequestMapping(path="/users")
 public class UsersController {
@@ -18,7 +20,7 @@ public class UsersController {
 
     //GET
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public @ResponseBody Iterable<Users> getAllUsers() {
+    public @ResponseBody List<Users> getAllUsers() {
         return repository.findAll();
     }
 

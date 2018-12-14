@@ -1,11 +1,10 @@
 package com.javaee.proyek.whatsapp_proyek.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "users")
 public class Users {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -13,6 +12,51 @@ public class Users {
 
     private String email;
     private String password;
+    private String firstName;
+    private String lastName;
+    private LocalDateTime lastLogin;
+    private Integer status;
+    private Integer verified;
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public LocalDateTime getLastLogin() {
+        return lastLogin;
+    }
+
+    public void setLastLogin(LocalDateTime lastLogin) {
+        this.lastLogin = lastLogin;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Integer getVerified() {
+        return verified;
+    }
+
+    public void setVerified(Integer verified) {
+        this.verified = verified;
+    }
 
     public Integer getId() {
         return id;

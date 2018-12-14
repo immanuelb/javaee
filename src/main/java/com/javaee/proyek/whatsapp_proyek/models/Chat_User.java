@@ -1,21 +1,25 @@
 package com.javaee.proyek.whatsapp_proyek.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.*;
 
 @Entity
-public class Chats {
+@Table(name = "chat_user")
+public class Chat_User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name = "id")
     private Integer id;
-
-    private Integer id_user;
-    private Integer id_chat;
-    private Integer id_target;
+    @Column(name = "id_user")
+    private Integer idUser;
+    @Column(name = "id_chat")
+    private Integer idChat;
+    @Column(name = "id_target")
+    private Integer idTarget;
     private LocalDateTime time;
+
+    public Chat_User() {
+    }
 
     public Integer getId() {
         return id;
@@ -25,28 +29,28 @@ public class Chats {
         this.id = id;
     }
 
-    public Integer getId_user() {
-        return id_user;
+    public Integer getIdUser() {
+        return idUser;
     }
 
-    public void setId_user(Integer id_user) {
-        this.id_user = id_user;
+    public void setIdUser(Integer idUser) {
+        this.idUser = idUser;
     }
 
-    public Integer getId_chat() {
-        return id_chat;
+    public Integer getIdChat() {
+        return idChat;
     }
 
-    public void setId_chat(Integer id_chat) {
-        this.id_chat = id_chat;
+    public void setIdChat(Integer idChat) {
+        this.idChat = idChat;
     }
 
-    public Integer getId_target() {
-        return id_target;
+    public Integer getIdTarget() {
+        return idTarget;
     }
 
-    public void setId_target(Integer id_target) {
-        this.id_target = id_target;
+    public void setIdTarget(Integer idTarget) {
+        this.idTarget = idTarget;
     }
 
     public LocalDateTime getTime() {

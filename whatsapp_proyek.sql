@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2018 at 12:13 PM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.1
+-- Generation Time: Dec 14, 2018 at 01:55 PM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -42,11 +42,18 @@ CREATE TABLE `chat_detail` (
 
 CREATE TABLE `chat_user` (
   `id` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `id_chat` int(11) NOT NULL,
-  `id_target` int(11) NOT NULL,
-  `time` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_chat` int(11) DEFAULT NULL,
+  `id_target` int(11) DEFAULT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  `time` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `chat_user`
+--
+
+INSERT INTO `chat_user` (`id`, `id_chat`, `id_target`, `id_user`, `time`) VALUES
+(1, 1, 1, 1, '2018-12-14 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -74,7 +81,12 @@ INSERT INTO `hibernate_sequence` (`next_val`) VALUES
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_login` datetime DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `verified` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -110,9 +122,9 @@ ALTER TABLE `chat_detail`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `chat_user`
+-- AUTO_INCREMENT for table `users`
 --
-ALTER TABLE `chat_user`
+ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
