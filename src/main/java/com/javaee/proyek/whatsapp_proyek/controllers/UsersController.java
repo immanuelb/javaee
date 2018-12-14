@@ -1,18 +1,16 @@
 package com.javaee.proyek.whatsapp_proyek.controllers;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import javax.persistence.Id;
+import javax.validation.Valid;
+
 import com.javaee.proyek.whatsapp_proyek.models.Users;
 import com.javaee.proyek.whatsapp_proyek.repositories.UsersRepository;
-import org.bson.types.ObjectId;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMethod;
-import javax.validation.Valid;
-import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/users")
 public class UsersController {
     @Autowired
@@ -20,34 +18,19 @@ public class UsersController {
 
     //GET
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public List<Users> getAllUsers() {
+    public @ResponseBody Iterable<Users> getAllUsers() {
         return repository.findAll();
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Users getPetById(@PathVariable("id") ObjectId id) {
-        return repository.findBy_id(id);
-    }
-
-    //PUT
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public void modifyPetById(@PathVariable("id") ObjectId id, @Valid
-    @RequestBody Users users) {
-        users.set_id(id);
-        repository.save(users);
-    }
+    /*@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public Users getUsersById(@PathVariable("id") Id id) {
+        return repository.findById();
+    }*/
 
     //POST
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public Users createPet(@Valid @RequestBody Users users) {
-        users.set_id(ObjectId.get());
+    public Users createUser(@Valid @RequestBody Users users) {
         repository.save(users);
         return users;
-    }
-
-    //DELETE
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void deletePet(@PathVariable ObjectId id) {
-        repository.delete(repository.findBy_id(id));
     }
 }

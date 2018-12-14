@@ -1,35 +1,40 @@
 package com.javaee.proyek.whatsapp_proyek.models;
 
-import org.bson.types.ObjectId;
-import org.springframework.data.annotation.Id;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class Users {
     @Id
-    public ObjectId _id;
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Integer id;
 
-    public String name;
+    private String email;
+    private String password;
 
-    public Users() {
+    public Integer getId() {
+        return id;
     }
 
-    public Users(ObjectId _id, String name) {
-        this._id = _id;
-        this.name = name;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String get_id() {
-        return _id.toHexString();
+    public String getEmail() {
+        return email;
     }
 
-    public void set_id(ObjectId _id) {
-        this._id = _id;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getName() {
-        return name;
+    public String getPassword() {
+        return password;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
