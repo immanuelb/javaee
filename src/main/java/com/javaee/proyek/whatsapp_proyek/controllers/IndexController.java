@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class IndexController {
-    @RequestMapping("/")
+    @RequestMapping(value = "/")
     public String index(){
         return "index";
     }
 
-    @RequestMapping("/home")
+    @RequestMapping(value = "/home")
     public String getHomePage(@RequestParam("username") String uname, @RequestParam("password") String password){
         return "home";
     }

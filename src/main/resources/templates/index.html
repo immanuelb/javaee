@@ -14,14 +14,13 @@
 <div class="container putih">
     <div class="atas">
         <div class="tengah">
-            <form action="/login" th:action="@{/login/}" method="POST">
+            <form action="/login" th:action="@{/login}" method="POST">
                 <h1>Whatsapp</h1>
                 <h3>Please login to use this application</h3>
                 <div class="kiri">
                     <h4>Email :<input type="text" name="email"/></h4>
                     <h4>Password :<input type="text" name="password"/></h4>
                 </div>
-                <input type="checkbox" name=""> Keep me signed in <br>
                 <input type="submit" value="Login" class="btnLogin"/>
             </form>
             <a href="/register">Register</a>
