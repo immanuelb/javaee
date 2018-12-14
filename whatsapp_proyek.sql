@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2018 at 10:13 AM
+-- Generation Time: Dec 14, 2018 at 12:13 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -25,24 +25,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chat`
---
-
-CREATE TABLE `chat` (
-  `id` int(11) NOT NULL,
-  `id_chat` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `chat_detail`
 --
 
 CREATE TABLE `chat_detail` (
   `id` int(11) NOT NULL,
   `id_chat` int(11) NOT NULL,
-  `chat_msg` varchar(100) NOT NULL
+  `msg` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chat_user`
+--
+
+CREATE TABLE `chat_user` (
+  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_chat` int(11) NOT NULL,
+  `id_target` int(11) NOT NULL,
+  `time` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -79,15 +82,15 @@ CREATE TABLE `users` (
 --
 
 --
--- Indexes for table `chat`
---
-ALTER TABLE `chat`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `chat_detail`
 --
 ALTER TABLE `chat_detail`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `chat_user`
+--
+ALTER TABLE `chat_user`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -101,15 +104,15 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `chat`
---
-ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `chat_detail`
 --
 ALTER TABLE `chat_detail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `chat_user`
+--
+ALTER TABLE `chat_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
