@@ -1,15 +1,17 @@
 'use strict';
 
-var usernamePage = document.querySelector('#username-page');
+var loginPage = document.querySelector('#login-page');
+var registerPage = document.querySelector('#register-page');
 var chatPage = document.querySelector('#chat-page');
-var usernameForm = document.querySelector('#usernameForm');
+var loginForm = document.querySelector('#loginForm');
 var messageForm = document.querySelector('#messageForm');
 var messageInput = document.querySelector('#message');
 var messageArea = document.querySelector('#messageArea');
 var connectingElement = document.querySelector('.connecting');
-
+var btnLogin = document.getElementById('#btnLogin').val();
+var btnRegister = document.getElementById('#btnRegister').val();
 var stompClient = null;
-var username = null;
+var login = null;
 
 var colors = [
     '#2196F3', '#32c787', '#00BCD4', '#ff5652',
@@ -17,17 +19,23 @@ var colors = [
 ];
 
 function connect(event) {
-    username = document.querySelector('#name').value.trim();
-
-    if(username) {
-        usernamePage.classList.add('hidden');
-        chatPage.classList.remove('hidden');
+    //login = document.querySelector('#name').value.trim();
+    login = "a";
+    if(btnRegister){
+        alert("register");
+    }
+    else if(btnLogin){
+        alert("login");
+    }
+    /*if(login) {
+        loginPage.classList.add('hidden');
+        registerPage.classList.remove('hidden');
 
         var socket = new SockJS('/ws');
         stompClient = Stomp.over(socket);
 
         stompClient.connect({}, onConnected, onError);
-    }
+    }*/
     event.preventDefault();
 }
 
@@ -36,13 +44,13 @@ function onConnected() {
     // Subscribe to the Public Topic
     stompClient.subscribe('/topic/public', onMessageReceived);
 
-    // Tell your username to the server
+    // Tell your login to the server
     stompClient.send("/app/chat.addUser",
         {},
-        JSON.stringify({sender: username, type: 'JOIN'})
+        JSON.stringify({sender: login, type: 'JOIN'})
     );
 
-    connectingElement.classList.add('hidden');
+    //connectingElement.classList.add('hidden');
 }
 
 
@@ -56,7 +64,7 @@ function sendMessage(event) {
     var messageContent = messageInput.value.trim();
     if(messageContent && stompClient) {
         var chatMessage = {
-            sender: username,
+            sender: login,
             content: messageInput.value,
             type: 'CHAT'
         };
@@ -88,10 +96,10 @@ function onMessageReceived(payload) {
 
         messageElement.appendChild(avatarElement);
 
-        var usernameElement = document.createElement('span');
-        var usernameText = document.createTextNode(message.sender);
-        usernameElement.appendChild(usernameText);
-        messageElement.appendChild(usernameElement);
+        var loginElement = document.createElement('span');
+        var loginText = document.createTextNode(message.sender);
+        loginElement.appendChild(loginText);
+        messageElement.appendChild(loginElement);
     }
 
     var textElement = document.createElement('p');
@@ -114,5 +122,5 @@ function getAvatarColor(messageSender) {
     return colors[index];
 }
 
-usernameForm.addEventListener('submit', connect, true);
-messageForm.addEventListener('submit', sendMessage, true);
+loginForm.addEventListener('submit', connect, true);
+//messageForm.addEventListener('submit', sendMessage, true);
