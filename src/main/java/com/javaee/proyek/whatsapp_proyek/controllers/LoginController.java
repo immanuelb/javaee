@@ -21,7 +21,7 @@ public class LoginController {
     @Autowired
     private UsersRepository usersRepository;
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    /*@RequestMapping(value = "/login", method = RequestMethod.POST)
     public ModelAndView findUserByEmailAndPassword(@Valid Users user){
         ModelAndView modelAndView = new ModelAndView();
         Users userExist = usersRepository.findByEmailAndPassword(user.getEmail(),user.getPassword());
@@ -32,5 +32,5 @@ public class LoginController {
             modelAndView.setViewName("index");
         }
         return modelAndView;
-    }
+    }*/
 }
