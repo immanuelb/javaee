@@ -13,6 +13,7 @@ public class Users {
 
     private String email;
     private String password;
+    private String passwordconn;
     private String firstName;
     private String lastName;
     private LocalDateTime lastLogin;
@@ -81,5 +82,14 @@ public class Users {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Transient
+    public String getPasswordconn() {
+        return passwordconn;
+    }
+
+    public void setPasswordconn(String passwordconn) {
+        this.passwordconn = passwordconn;
     }
 }

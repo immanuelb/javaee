@@ -13,13 +13,9 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping(value="/cekLogin", method= RequestMethod.POST, params="action=Login")
-    public String login(){
-        return "login";
-    }
-    @RequestMapping(value="/cekLogin", method= RequestMethod.POST, params="action=Register")
-    public String register(){
-        return "register";
+    @RequestMapping(value = "/result")
+    public String result(){
+        return "result";
     }
 
     @RequestMapping(value = "/home")
